@@ -29,7 +29,6 @@ router.route('/:id')
     Album.findByIdAndUpdate(req.params.id, req.body, {new:true}, res.handle);
   });
 
-
 router.route('/:albumId/images/:imageId')
   .post((req, res) => {
     var albumId = req.params.albumId;
@@ -46,8 +45,5 @@ router.route('/:albumId/images/:imageId')
 //   .get((req, res) => {
 //     Album.summary(res.handle);
 //   })
-
-
-
 
 module.exports = router;

@@ -6,6 +6,21 @@ const expect = require('chai').expect;
 let app = require('../../app');
 let db = require('../../config/db');
 
+const mongoose = require('mongoose');
+const dbUrl = 'mongodb://localhost/photo-album-test';
+​
+before(function(cb) {
+  mongoose.connection.close(function() {
+    mongoose.connect(dbUrl, cb);
+  });
+});
+​
+after(function(cb) {
+  mongoose.connection.close(cb);
+});
+
+
+
 //  before each test, empty db, and insert test data
 
 beforeEach(function(cb) {
@@ -16,14 +31,14 @@ beforeEach(function(cb) {
   });
 });
 
-describe('/api/todos', () => {
+describe('/api/albums', () => {
 
   describe('GET /', () => {
 
-    it('should respond with the array of todos', cb => {
+    it('should respond with the array of albums', cb => {
 
       supertest(app)
-        .get('/api/todos')
+        .get('/api/albums')
         .end((err, res) => {
 
           expect(err).to.not.exist;
@@ -63,5 +78,3 @@ describe('/api/todos', () => {
 
   });
 });
-
-
