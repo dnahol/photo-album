@@ -1,0 +1,29 @@
+{
+  "name": "photo-album-backend",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Dalia Nahol <dlznsites@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/CodingHouseFI/todo-from-scratch",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "bootswatch-dist": "united",
+    "angular": "^1.5.5",
+    "angular-bootstrap": "^1.3.2",
+    "angular-ui-router": "^0.2.18",
+    "ngSweetAlert": "angular-sweetalert#^1.1.0"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
+  }
+}

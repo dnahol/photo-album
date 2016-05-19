@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo App</title>
+
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+  <script src="/js/module.js"></script>
+  <script src="/js/controllers.js"></script>
+  <script src="/js/services.js"></script>
+
+</head>
+<body ng-app='todoApp' ng-controller='mainCtrl'>
+  <div class="container">
+    <h1 class="text-center">Todo App!</h1>
+  
+    <form ng-submit='createTodo()'>
+      <div class="form-group">
+        <label for="newTodoDesc">Description</label>
+        <input type="text" class="form-control" placeholder="Buy Eggs." ng-model='newTodo.desc' required>
+      </div>
+      <div class="form-group">
+        <label for="newTodoDueDate">Due Date</label>
+        <input type="date" class="form-control" ng-model='newTodo.dueDate' required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Todo</button>
+    </form>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th class='col-xs-2'>Created At</th>
+          <th class='col-xs-2'>Due Date</th>
+          <th class='col-xs-6'>Description</th>
+          <th class='col-xs-1'>Done?</th>
+          <th class='col-xs-1'>Delete</th>
+        </tr>
+      </thead>
+      <tbody class='todoList'>
+
+        <tr ng-repeat='todo in todos'>
+          <td class='createdAt'>{{todo.createdAt | date}}</td>
+          <td class='dueDate'>{{todo.dueDate | date}}</td>
+          <td class='desc'>{{todo.desc}}</td>
+          <td>
+            <input class='isComplete'
+                   type="checkbox"
+                   ng-checked='todo.isComplete'
+                   ng-click='toggleComplete(todo)'>
+          </td>
+          <td>
+            <button type="button" class="btn btn-default btn-sm delete" ng-click='removeTodo(todo)'>
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+
+<!--   <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class='newTodoForm'>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">New Todo</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="newTodoDesc">Description</label>
+              <input type="text" class="form-control" id="newTodoDesc" placeholder="Buy Eggs." required>
+            </div>
+            <div class="form-group">
+              <label for="newTodoDueDate">Due Date</label>
+              <input type="date" class="form-control" id="newTodoDueDate" required>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create Todo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+</body>
+</html>

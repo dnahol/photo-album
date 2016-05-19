@@ -1,0 +1,7 @@
+.template {
+  display: none;
+}
+
+input[type=checkbox] {
+  transform: scale(1.3);
+}
